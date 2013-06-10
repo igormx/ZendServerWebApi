@@ -20,16 +20,14 @@ class ZendServerController extends AbstractController
     public function onDispatch (MvcEvent $e)
     {
         $routeMatch = $e->getRouteMatch();
-        var_dump($routeMatch);
-        die('garg');
         if (! $routeMatch) {
             throw new \Exception(
                     'Missing route matches; unsure how to retrieve action');
         }
         $action = $routeMatch->getParam('action', 'not-found');
         $response = $this->sendApiRequest();
-        $e->setResult($response);
-        return $response;
+        $e->setResult(false);
+        echo $response->getHttpResponse()->getBody();
     }
 
     /**
@@ -40,12 +38,9 @@ class ZendServerController extends AbstractController
     protected function sendApiRequest ()
     {
         $serviceLocator = $this->getServiceLocator();
-        $apiKey = $serviceLocator->get('defaultApiKey');
-        $server = $serviceLocator->get('targetZendServer');
-        $client = $serviceLocator->get('zendserverclient');
-        $request = new Request($server, $this->params('action'), $apiKey);
-        $request->prepareRequest();
-        $response = $client->send($request);
+        $apiManager = $serviceLocator->get('zend_server_api');
+        $action = $this->params('action');
+        $response = $apiManager->$action();
         return $response;
     }
 }
