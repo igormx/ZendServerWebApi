@@ -1,0 +1,13 @@
+{
+    "name": "ZendServerWebApi",
+    "description": "provides easy access to Zend Server API",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "zf2",
+        "zend server"
+    
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework": "2.*"
+    }
+}
