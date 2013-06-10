@@ -20,6 +20,8 @@ class ZendServerController extends AbstractController
     public function onDispatch (MvcEvent $e)
     {
         $routeMatch = $e->getRouteMatch();
+        var_dump($routeMatch);
+        die('garg');
         if (! $routeMatch) {
             throw new \Exception(
                     'Missing route matches; unsure how to retrieve action');

@@ -5,7 +5,7 @@ return array(
             'routes' => array(
                 'codetracingList' => array(
                     'options' => array(
-                        'route' => 'codetracingList [--applications=] [--freetext=] [--type=] [--limit=] [--offset=] [--orderBy=] [--direction=]',
+                        'route' => 'zsapi codetracingList [--applications=] [--freetext=] [--type=] [--limit=] [--offset=] [--orderBy=] [--direction=]',
                         'defaults' => array(
                             'action' => 'codetracingList'
                         )

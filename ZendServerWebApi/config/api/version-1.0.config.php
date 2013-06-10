@@ -5,15 +5,16 @@ return array(
             'routes' => array(
                 'configurationExport' => array(
                     'options' => array(
-                        'route' => 'configurationExport [--directivesBlacklist=] [--snapshotName=]',
+                        'route' => 'zsapi configurationExport [--directivesBlacklist=] [--snapshotName=]',
                         'defaults' => array(
+                        	'controller' => 'ZendServerWebApi\Controller\ZendServer',	
                             'action' => 'configurationExport'
                         )
                     )
                 ),
                 'configurationImport' => array(
                     'options' => array(
-                        'route' => 'configurationImport --configFile= [--ignoreSystemMismatch=]',
+                        'route' => 'zsapi configurationImport --configFile= [--ignoreSystemMismatch=]',
                         'defaults' => array(
                             'action' => 'configurationImport',
                             'apiMethod' => 'post'
@@ -22,15 +23,16 @@ return array(
                 ),
                 'getSystemInfo' => array(
                     'options' => array(
-                        'route' => 'getSystemInfo',
+                        'route' => 'zsapi getSystemInfo',
                         'defaults' => array(
+                        	'controller' => 'ZendServerWebApi\Controller\ZendServer',
                             'action' => 'getSystemInfo'
                         )
                     )
                 ),
                 'clusterGetServersStatus' => array(
                     'options' => array(
-                        'route' => 'clusterGetServersStatus [--servers=] [--forec=]',
+                        'route' => 'zsapi clusterGetServersStatus [--servers=] [--forec=]',
                         'defaults' => array(
                             'action' => 'clusterGetServersStatus'
                         )
@@ -38,7 +40,7 @@ return array(
                 ),
                 'clusterAddServer' => array(
                     'options' => array(
-                        'route' => 'clusterAddServer --serverName= --serverIp=',
+                        'route' => 'zsapi clusterAddServer --serverName= --serverIp=',
                         'defaults' => array(
                             'action' => 'changeServerNameById',
                             'apiMethod' => 'post'
@@ -47,7 +49,7 @@ return array(
                 ),
                 'clusterRemoveServer' => array(
                     'options' => array(
-                        'route' => 'clusterRemoveServer --serverId=',
+                        'route' => 'zsapi clusterRemoveServer --serverId=',
                         'defaults' => array(
                             'action' => 'clusterRemoveServer',
                             'apiMethod' => 'post'
@@ -56,7 +58,7 @@ return array(
                 ),
                 'clusterDisableServer' => array(
                     'options' => array(
-                        'route' => 'clusterDisableServer --serverId=',
+                        'route' => 'zsapi clusterDisableServer --serverId=',
                         'defaults' => array(
                             'action' => 'clusterDisableServer',
                             'apiMethod' => 'post'
@@ -65,7 +67,7 @@ return array(
                 ),
                 'clusterEnableServer' => array(
                     'options' => array(
-                        'route' => 'clusterEnableServer --serverId=',
+                        'route' => 'zsapi clusterEnableServer --serverId=',
                         'defaults' => array(
                             'action' => 'clusterEnableServer',
                             'apiMethod' => 'post'
@@ -74,7 +76,7 @@ return array(
                 ),
                 'clusterReconfigureServer' => array(
                     'options' => array(
-                        'route' => 'clusterReconfigureServer --serverId= [--doRestart=]',
+                        'route' => 'zsapi clusterReconfigureServer --serverId= [--doRestart=]',
                         'defaults' => array(
                             'action' => 'clusterReconfigureServer',
                             'apiMethod' => 'post'
@@ -83,7 +85,7 @@ return array(
                 ),
                 'restartPHP' => array(
                     'options' => array(
-                        'route' => 'restartPHP [--servers=] [--force=] [parallelRestart=]',
+                        'route' => 'zsapi restartPHP [--servers=] [--force=] [--parallelRestart=]',
                         'defaults' => array(
                             'action' => 'restartPHP',
                             'apiMethod' => 'post'

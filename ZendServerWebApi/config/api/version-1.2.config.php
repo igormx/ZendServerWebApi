@@ -5,7 +5,7 @@ return array(
             'routes' => array(
                 'codetracingDisable' => array(
                     'options' => array(
-                        'route' => 'codetracingDisable [--restartNow=]',
+                        'route' => 'zsapi codetracingDisable [--restartNow=]',
                         'defaults' => array(
                             'action' => 'codetracingDisable',
                             'apiMethod' => 'post'
@@ -15,7 +15,7 @@ return array(
                 ),
                 'codetracingEnable' => array(
                     'options' => array(
-                        'route' => 'codetracingEnable [--restartNow=]',
+                        'route' => 'zsapi codetracingEnable [--restartNow=]',
                         'defaults' => array(
                             'action' => 'codetracingEnable',
                             'apiMethod' => 'post'
@@ -25,7 +25,7 @@ return array(
                 ),
                 'codetracingIsEnabled' => array(
                     'options' => array(
-                        'route' => 'codetracingIsEnabled',
+                        'route' => 'zsapi codetracingIsEnabled',
                         'defaults' => array(
                             'action' => 'codetracingIsEnabled'
                         )
@@ -34,7 +34,7 @@ return array(
                 ),
                 'codetracingCreate' => array(
                     'options' => array(
-                        'route' => 'codetracingCreate --url=',
+                        'route' => 'zsapi codetracingCreate --url=',
                         'defaults' => array(
                             'action' => 'codetracingCreate',
                             'apiMethod' => 'post'
@@ -44,7 +44,7 @@ return array(
                 ),
                 'codetracingGetInfo' => array(
                     'options' => array(
-                        'route' => 'codetracingGetInfo --id=',
+                        'route' => 'zsapi codetracingGetInfo --id=',
                         'defaults' => array(
                             'action' => 'codetracingGetInfo'
                         )
@@ -53,7 +53,7 @@ return array(
                 ),
                 'codetracingDelete' => array(
                     'options' => array(
-                        'route' => 'codetracingDelete --traceFile=',
+                        'route' => 'zsapi codetracingDelete --traceFile=',
                         'defaults' => array(
                             'action' => 'codetracingDelete',
                             'apiMethod' => 'post'
@@ -63,7 +63,7 @@ return array(
                 ),
                 'codetracingDownloadTraceFile' => array(
                     'options' => array(
-                        'route' => 'codetracingDownloadTraceFile --traceFile= [--eventsGroupId=]',
+                        'route' => 'zsapi codetracingDownloadTraceFile --traceFile= [--eventsGroupId=]',
                         'defaults' => array(
                             'action' => 'codetracingDownloadTraceFile'
                         )
@@ -73,7 +73,7 @@ return array(
                 // Deployment
                 'applicationGetStatus' => array(
                     'options' => array(
-                        'route' => 'applicationGetStatus [--applications=] [--direction=]',
+                        'route' => 'zsapi applicationGetStatus [--applications=] [--direction=]',
                         'defaults' => array(
                             'action' => 'applicationGetStatus'
                         )
@@ -82,7 +82,7 @@ return array(
                 ),
                 'applicationDeploy' => array(
                     'options' => array(
-                        'route' => 'applicationDeploy --appPackage= --baseUrl= [--createVhost=] [--defaultserver=] [--userAppName=] [--ignoreFialures=] [--userParams=]',
+                        'route' => 'zsapi applicationDeploy --appPackage= --baseUrl= [--createVhost=] [--defaultserver=] [--userAppName=] [--ignoreFialures=] [--userParams=]',
                         'defaults' => array(
                             'action' => 'applicationDeploy',
                             'apiMethod' => 'post'
@@ -92,7 +92,7 @@ return array(
                 ),
                 'applicationUpdate' => array(
                     'options' => array(
-                        'route' => 'applicationUpdate --appId= --appPackage= [--ignoreFailures=] [--userParams=]',
+                        'route' => 'zsapi applicationUpdate --appId= --appPackage= [--ignoreFailures=] [--userParams=]',
                         'defaults' => array(
                             'action' => 'applicationUpdate',
                             'apiMethod' => 'post'
@@ -102,7 +102,7 @@ return array(
                 ),
                 'applicationRemove' => array(
                     'options' => array(
-                        'route' => 'applicationRemove --appId=',
+                        'route' => 'zsapi applicationRemove --appId=',
                         'defaults' => array(
                             'action' => 'applicationRemove',
                             'apiMethod' => 'post'
@@ -112,7 +112,7 @@ return array(
                 ),
                 'applicationSynchronize' => array(
                     'options' => array(
-                        'route' => 'applicationSynchronize --appId= [--servers=] [--ignoreFailures=]',
+                        'route' => 'zsapi applicationSynchronize --appId= [--servers=] [--ignoreFailures=]',
                         'defaults' => array(
                             'action' => 'applicationSynchronize',
                             'apiMethod' => 'post'
@@ -122,7 +122,7 @@ return array(
                 ),
                 'applicationRollback' => array(
                     'options' => array(
-                        'route' => 'applicationRollback --appId=',
+                        'route' => 'zsapi applicationRollback --appId=',
                         'defaults' => array(
                             'action' => 'applicationRollback',
                             'apiMethod' => 'post'
@@ -132,7 +132,7 @@ return array(
                 // Monitor
                 'monitorGetRequestSummary' => array(
                     'options' => array(
-                        'route' => 'monitorGetRequestSummary --requestUid=',
+                        'route' => 'zsapi monitorGetRequestSummary --requestUid=',
                         'defaults' => array(
                             'action' => 'monitorGetRequestSummary'
                         )
@@ -141,7 +141,7 @@ return array(
                 ),
                 'monitorGetIssuesListPredefinedFilter' => array(
                     'options' => array(
-                        'route' => 'monitorGetIssuesListPredefinedFilter --filterId= [--limit=] [--offset=] [--order=] [--direction=] [--filters=]',
+                        'route' => 'zsapi monitorGetIssuesListPredefinedFilter --filterId= [--limit=] [--offset=] [--order=] [--direction=] [--filters=]',
                         'defaults' => array(
                             'action' => 'monitorGetIssuesListPredefinedFilter'
                         )
@@ -150,7 +150,7 @@ return array(
                 ),
                 'monitorGetIssuesDetails' => array(
                     'options' => array(
-                        'route' => 'monitorGetIssuesDetails --issueId= [--limit=]',
+                        'route' => 'zsapi monitorGetIssuesDetails --issueId= [--limit=]',
                         'defaults' => array(
                             'action' => 'monitorGetIssuesDetails'
                         )
@@ -159,7 +159,7 @@ return array(
                 ),
                 'monitorGetEventGroupDetails' => array(
                     'options' => array(
-                        'route' => 'monitorGetEventGroupDetails --issueId= --eventsGroupId=',
+                        'route' => 'zsapi monitorGetEventGroupDetails --issueId= --eventsGroupId=',
                         'defaults' => array(
                             'action' => 'monitorGetEventGroupDetails'
                         )
@@ -168,7 +168,7 @@ return array(
                 ),
                 'monitorExportIssueByEventsGroup' => array(
                     'options' => array(
-                        'route' => 'monitorExportIssueByEventsGroup --eventsGroupId=',
+                        'route' => 'zsapi monitorExportIssueByEventsGroup --eventsGroupId=',
                         'defaults' => array(
                             'action' => 'monitorExportIssueByEventsGroup'
                         )
@@ -177,7 +177,7 @@ return array(
                 ),
                 'monitorChangeIssueStatus' => array(
                     'options' => array(
-                        'route' => 'monitorChangeIssueStatus --issueId= --newStatus=',
+                        'route' => 'zsapi monitorChangeIssueStatus --issueId= --newStatus=',
                         'defaults' => array(
                             'action' => 'monitorChangeIssueStatus',
                             'apiMethod' => 'post'
@@ -188,7 +188,7 @@ return array(
                 // Studio integration
                 'studioStartDebug' => array(
                     'options' => array(
-                        'route' => 'studioStartDebug --eventsGroupId= [--noRemote=] [--overrideHost=]',
+                        'route' => 'zsapi studioStartDebug --eventsGroupId= [--noRemote=] [--overrideHost=]',
                         'defaults' => array(
                             'action' => 'studioStartDebug',
                             'apiMethod' => 'post'
@@ -198,7 +198,7 @@ return array(
                 ),
                 'studioStartProfile' => array(
                     'options' => array(
-                        'route' => 'studioStartProfile --eventsGroupId= [--overrideHost=]',
+                        'route' => 'zsapi studioStartProfile --eventsGroupId= [--overrideHost=]',
                         'defaults' => array(
                             'action' => 'studioStartProfile',
                             'apiMethod' => 'post'
@@ -208,7 +208,7 @@ return array(
                 ),
                 'studioShowSource' => array(
                     'options' => array(
-                        'route' => 'studioShowSource --eventsGroupId= [--overrideHost=]',
+                        'route' => 'zsapi studioShowSource --eventsGroupId= [--overrideHost=]',
                         'defaults' => array(
                             'action' => 'studioShowSource',
                             'apiMethod' => 'post'

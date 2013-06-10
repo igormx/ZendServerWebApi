@@ -31,7 +31,7 @@ class Module implements ConfigProviderInterface, AutoloaderProviderInterface,
         }
         ksort($apiConf);
         foreach ($apiConf as $version => $config) {
-            $mainConfig = array_merge($mainConfig, $config);
+            $mainConfig = array_merge_recursive($mainConfig, $config);
         }
         return $mainConfig;
     }

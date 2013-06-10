@@ -6,7 +6,7 @@ return array(
                 // Adminsitration
                 'userAuthentificationSettings' => array(
                     'options' => array(
-                        'route' => 'userAuthentificationSettings --type= --ldap= --password= --confirmNewPassword=',
+                        'route' => 'zsapi userAuthentificationSettings --type= --ldap= --password= --confirmNewPassword=',
                         'defaults' => array(
                             'action' => 'userAuthentificationSettings',
                             'apiMethod' => 'post'
@@ -15,7 +15,7 @@ return array(
                 ),
                 'userSetPassword' => array(
                     'options' => array(
-                        'route' => 'userSetPassword --username= --password= --newPassword= --confirmNewPassword=',
+                        'route' => 'zsapi userSetPassword --username= --password= --newPassword= --confirmNewPassword=',
                         'defaults' => array(
                             'action' => 'userSetPassword',
                             'apiMethod' => 'post'
@@ -24,7 +24,7 @@ return array(
                 ),
                 'setPassword' => array(
                     'options' => array(
-                        'route' => 'setPassword --password= --newPassword= --confirmNewPassword=',
+                        'route' => 'zsapi setPassword --password= --newPassword= --confirmNewPassword=',
                         'defaults' => array(
                             'action' => 'userSetPassword',
                             'apiMethod' => 'post'
@@ -33,7 +33,7 @@ return array(
                 ),
                 'apiKeysGetList' => array(
                     'options' => array(
-                        'route' => 'apiKeysGetList',
+                        'route' => 'zsapi apiKeysGetList',
                         'defaults' => array(
                             'action' => 'apiKeysGetList'
                         )
@@ -41,7 +41,7 @@ return array(
                 ),
                 'apiKeysAddKey' => array(
                     'options' => array(
-                        'route' => 'apiKeysAddKey --name= --username=',
+                        'route' => 'zsapi apiKeysAddKey --name= --username=',
                         'defaults' => array(
                             'action' => 'apiKeysAddKey',
                             'apiMethod' => 'post'
@@ -50,7 +50,7 @@ return array(
                 ),
                 'apiKeysRemoveKey' => array(
                     'options' => array(
-                        'route' => 'apiKeysRemoveKey --ids=',
+                        'route' => 'zsapi apiKeysRemoveKey --ids=',
                         'defaults' => array(
                             'action' => 'apiKeysRemoveKey',
                             'apiMethod' => 'post'
@@ -59,7 +59,7 @@ return array(
                 ),
                 'serverValidateLicense' => array(
                     'options' => array(
-                        'route' => 'serverValidateLicense --licenseName= --licenseValue=',
+                        'route' => 'zsapi serverValidateLicense --licenseName= --licenseValue=',
                         'defaults' => array(
                             'action' => 'serverValidateLicense',
                             'apiMethod' => 'post'
@@ -68,7 +68,7 @@ return array(
                 ),
                 'aclSetGroups' => array(
                     'options' => array(
-                        'route' => 'aclSetGroups --role_groups= [--app_groups=]',
+                        'route' => 'zsapi aclSetGroups --role_groups= [--app_groups=]',
                         'defaults' => array(
                             'action' => 'aclSetGroups',
                             'apiMethod' => 'post'
@@ -77,7 +77,7 @@ return array(
                 ),
                 'bootstrapSingleserver' => array(
                     'options' => array(
-                        'route' => 'bootstrapSingleserver [--production=] --adminPassword= [--applicationUrl=] [--adminEmail=] [--developerPassword=] [--orderNumber=] [--licenseKey=] --acceptEula=',
+                        'route' => 'zsapi bootstrapSingleserver [--production=] --adminPassword= [--applicationUrl=] [--adminEmail=] [--developerPassword=] [--orderNumber=] [--licenseKey=] --acceptEula=',
                         'defaults' => array(
                             'action' => 'bootstrapSingleserver',
                             'apiMethod' => 'post'
@@ -86,7 +86,7 @@ return array(
                 ),
                 'serverStoreLicense' => array(
                     'options' => array(
-                        'route' => 'serverStoreLicense --licenseName= --licenseValue=',
+                        'route' => 'zsapi serverStoreLicense --licenseName= --licenseValue=',
                         'defaults' => array(
                             'action' => 'serverStoreLicense',
                             'apiMethod' => 'post'
@@ -96,7 +96,7 @@ return array(
                 // Audit
                 'auditGetList' => array(
                     'options' => array(
-                        'route' => 'auditGetList [--limit=] [--offset=] [--order=] [--direction=] [--filter=]',
+                        'route' => 'zsapi auditGetList [--limit=] [--offset=] [--order=] [--direction=] [--filter=]',
                         'defaults' => array(
                             'action' => 'auditGetList'
                         )
@@ -104,7 +104,7 @@ return array(
                 ),
                 'auditGetDetails' => array(
                     'options' => array(
-                        'route' => 'auditGetDetails --auditId=',
+                        'route' => 'zsapi auditGetDetails --auditId=',
                         'defaults' => array(
                             'action' => 'auditGetDetails'
                         )
@@ -112,7 +112,7 @@ return array(
                 ),
                 'auditSetSettings' => array(
                     'options' => array(
-                        'route' => 'auditSetSettings --history= [--email=] [--callbackUrl=]',
+                        'route' => 'zsapi auditSetSettings --history= [--email=] [--callbackUrl=]',
                         'defaults' => array(
                             'action' => 'auditSetSettings',
                             'apiMethod' => 'post'
@@ -122,7 +122,7 @@ return array(
                 // Cache
                 'cacheClear' => array(
                     'options' => array(
-                        'route' => 'cacheClear --component=',
+                        'route' => 'zsapi cacheClear --component=',
                         'defaults' => array(
                             'action' => 'cacheClear',
                             'apiMethod' => 'post'
@@ -132,7 +132,7 @@ return array(
                 // Configuration Management
                 'emailSend' => array(
                     'options' => array(
-                        'route' => 'emailSend --to= [--toName=] --from= [--fromName=] --subject= --templateName= [--templateParams=] [--headers=] [--html=]',
+                        'route' => 'zsapi emailSend --to= [--toName=] --from= [--fromName=] --subject= --templateName= [--templateParams=] [--headers=] [--html=]',
                         'defaults' => array(
                             'action' => 'emailSend',
                             'apiMethod' => 'post'
@@ -141,7 +141,7 @@ return array(
                 ),
                 'configurationExtensionsOn' => array(
                     'options' => array(
-                        'route' => 'configurationExtensionsOn --extensions=',
+                        'route' => 'zsapi configurationExtensionsOn --extensions=',
                         'defaults' => array(
                             'action' => 'configurationExtensionsOn',
                             'apiMethod' => 'post'
@@ -150,7 +150,7 @@ return array(
                 ),
                 'configurationExtensionsOff' => array(
                     'options' => array(
-                        'route' => 'configurationExtensionsOff --extensions=',
+                        'route' => 'zsapi configurationExtensionsOff --extensions=',
                         'defaults' => array(
                             'action' => 'configurationExtensionsOff',
                             'apiMethod' => 'post'
@@ -159,7 +159,7 @@ return array(
                 ),
                 'configurationValidateDirectives' => array(
                     'options' => array(
-                        'route' => 'configurationValidateDirectives --directives=',
+                        'route' => 'zsapi configurationValidateDirectives --directives=',
                         'defaults' => array(
                             'action' => 'configurationValidateDirectives'
                         )
@@ -167,7 +167,7 @@ return array(
                 ),
                 'configurationStoreDirectives' => array(
                     'options' => array(
-                        'route' => 'configurationStoreDirectives --directives=',
+                        'route' => 'zsapi configurationStoreDirectives --directives=',
                         'defaults' => array(
                             'action' => 'configurationStoreDirectives',
                             'apiMethod' => 'post'
@@ -176,7 +176,7 @@ return array(
                 ),
                 'configurationSearch' => array(
                     'options' => array(
-                        'route' => 'configurationSearch --query= [--filter=]',
+                        'route' => 'zsapi configurationSearch --query= [--filter=]',
                         'defaults' => array(
                             'action' => 'configurationSearch'
                         )
@@ -184,7 +184,7 @@ return array(
                 ),
                 'configurationExtensionsList' => array(
                     'options' => array(
-                        'route' => 'configurationExtensionsList [--type=] [--order=] [--direction=] [--filter=]',
+                        'route' => 'zsapi configurationExtensionsList [--type=] [--order=] [--direction=] [--filter=]',
                         'defaults' => array(
                             'action' => 'configurationExtensionsList'
                         )
@@ -192,7 +192,7 @@ return array(
                 ),
                 'configurationDirectivesList' => array(
                     'options' => array(
-                        'route' => 'configurationDirectivesList [--extension=] [--daemon=] [--filter=]',
+                        'route' => 'zsapi configurationDirectivesList [--extension=] [--daemon=] [--filter=]',
                         'defaults' => array(
                             'action' => 'configurationDirectivesList'
                         )
@@ -201,7 +201,7 @@ return array(
                 
                 'configurationComponentsList' => array(
                     'options' => array(
-                        'route' => 'configurationComponentsList [--filter=]',
+                        'route' => 'zsapi configurationComponentsList [--filter=]',
                         'defaults' => array(
                             'action' => 'configurationComponentsList'
                         )
@@ -209,7 +209,7 @@ return array(
                 ),
                 'configurationRevertChanges' => array(
                     'options' => array(
-                        'route' => 'configurationRevertChanges --serverId= [--doRestart=]',
+                        'route' => 'zsapi configurationRevertChanges --serverId= [--doRestart=]',
                         'defaults' => array(
                             'action' => 'configurationRevertChanges',
                             'apiMethod' => 'post'
@@ -218,7 +218,7 @@ return array(
                 ),
                 'configurationApplyChanges' => array(
                     'options' => array(
-                        'route' => 'configurationApplyChanges --serverId=',
+                        'route' => 'zsapi configurationApplyChanges --serverId=',
                         'defaults' => array(
                             'action' => 'configurationApplyChanges',
                             'apiMethod' => 'post'
@@ -227,7 +227,7 @@ return array(
                 ),
                 'configurationReset' => array(
                     'options' => array(
-                        'route' => 'configurationReset --configFile= [--ignoreSystemMismatch=]',
+                        'route' => 'zsapi configurationReset --configFile= [--ignoreSystemMismatch=]',
                         'defaults' => array(
                             'action' => 'configurationReset',
                             'apiMethod' => 'post'
@@ -237,7 +237,7 @@ return array(
                 // Deployment
                 'applicationGetDetails' => array(
                     'options' => array(
-                        'route' => 'applicationGetDetails --application=',
+                        'route' => 'zsapi applicationGetDetails --application=',
                         'defaults' => array(
                             'action' => 'applicationGetDetails'
                         )
@@ -245,7 +245,7 @@ return array(
                 ),
                 'redeployAllApplications' => array(
                     'options' => array(
-                        'route' => 'redeployAllApplications [--servers=]',
+                        'route' => 'zsapi redeployAllApplications [--servers=]',
                         'defaults' => array(
                             'action' => 'redeployAllApplications',
                             'apiMethod' => 'post'
@@ -255,7 +255,7 @@ return array(
                 
                 'applicationDefine' => array(
                     'options' => array(
-                        'route' => 'applicationDefine --name= --baseUrl= [--version=] [--healthCheck=] [--logo=]',
+                        'route' => 'zsapi applicationDefine --name= --baseUrl= [--version=] [--healthCheck=] [--logo=]',
                         'defaults' => array(
                             'action' => 'applicationDefine',
                             'apiMethod' => 'post'
@@ -265,7 +265,7 @@ return array(
                 // Filter
                 'filterGetByType' => array(
                     'options' => array(
-                        'route' => 'filterGetByType --type=',
+                        'route' => 'zsapi filterGetByType --type=',
                         'defaults' => array(
                             'action' => 'filterGetByType'
                         )
@@ -273,7 +273,7 @@ return array(
                 ),
                 'filterSave' => array(
                     'options' => array(
-                        'route' => 'filterSave --type= --name= [--data=] [--id=]',
+                        'route' => 'zsapi filterSave --type= --name= [--data=] [--id=]',
                         'defaults' => array(
                             'action' => 'filterSave'
                         )
@@ -281,7 +281,7 @@ return array(
                 ),
                 'filterDelete' => array(
                     'options' => array(
-                        'route' => 'filterDelete --name=',
+                        'route' => 'zsapi filterDelete --name=',
                         'defaults' => array(
                             'action' => 'filterDelete'
                         )
@@ -290,7 +290,7 @@ return array(
                 // Job Queue
                 'jobqueueStatistics' => array(
                     'options' => array(
-                        'route' => 'jobqueueStatistics',
+                        'route' => 'zsapi jobqueueStatistics',
                         'defaults' => array(
                             'action' => 'jobqueueStatistics'
                         )
@@ -298,7 +298,7 @@ return array(
                 ),
                 'jobqueueJobsList' => array(
                     'options' => array(
-                        'route' => 'jobqueueJobsList [--limit=] [--offset=] [--orderBy=] [--direction=] [--filter=]',
+                        'route' => 'zsapi jobqueueJobsList [--limit=] [--offset=] [--orderBy=] [--direction=] [--filter=]',
                         'defaults' => array(
                             'action' => 'jobqueueJobsList'
                         )
@@ -306,7 +306,7 @@ return array(
                 ),
                 'jobqueueJobInfo' => array(
                     'options' => array(
-                        'route' => 'jobqueueJobInfo --id=',
+                        'route' => 'zsapi jobqueueJobInfo --id=',
                         'defaults' => array(
                             'action' => 'jobqueueJobInfo'
                         )
@@ -314,7 +314,7 @@ return array(
                 ),
                 'jobqueueDeleteJobs' => array(
                     'options' => array(
-                        'route' => 'jobqueueDeleteJobs --jobs=',
+                        'route' => 'zsapi jobqueueDeleteJobs --jobs=',
                         'defaults' => array(
                             'action' => 'jobqueueDeleteJobs',
                             'apiMethod' => 'post'
@@ -323,7 +323,7 @@ return array(
                 ),
                 'jobqueueRequeueJobs' => array(
                     'options' => array(
-                        'route' => 'jobqueueRequeueJobs --jobs=',
+                        'route' => 'zsapi jobqueueRequeueJobs --jobs=',
                         'defaults' => array(
                             'action' => 'jobqueueRequeueJobs',
                             'apiMethod' => 'post'
@@ -332,7 +332,7 @@ return array(
                 ),
                 'jobqueueListRules' => array(
                     'options' => array(
-                        'route' => 'jobqueueListRules [--limit=] [--offset=] [--orderBy=] [--direction=]',
+                        'route' => 'zsapi jobqueueListRules [--limit=] [--offset=] [--orderBy=] [--direction=]',
                         'defaults' => array(
                             'action' => 'jobqueueListRules'
                         )
@@ -340,7 +340,7 @@ return array(
                 ),
                 'jobqueueRuleInfo' => array(
                     'options' => array(
-                        'route' => 'jobqueueRuleInfo [--limit=] [--offset=] [--orderBy=] [--direction=] --id=',
+                        'route' => 'zsapi jobqueueRuleInfo [--limit=] [--offset=] [--orderBy=] [--direction=] --id=',
                         'defaults' => array(
                             'action' => 'jobqueueRuleInfo'
                         )
@@ -348,7 +348,7 @@ return array(
                 ),
                 'jobqueueSaveRule' => array(
                     'options' => array(
-                        'route' => 'jobqueueSaveRule --url= --options= [--vars=]',
+                        'route' => 'zsapi jobqueueSaveRule --url= --options= [--vars=]',
                         'defaults' => array(
                             'action' => 'jobqueueSaveRule',
                             'apiMethod' => 'post'
@@ -357,7 +357,7 @@ return array(
                 ),
                 'jobqueueSuspendRules' => array(
                     'options' => array(
-                        'route' => 'jobqueueSuspendRules --rules=',
+                        'route' => 'zsapi jobqueueSuspendRules --rules=',
                         'defaults' => array(
                             'action' => 'jobqueueSuspendRules',
                             'apiMethod' => 'post'
@@ -366,7 +366,7 @@ return array(
                 ),
                 'jobqueueResumeRules' => array(
                     'options' => array(
-                        'route' => 'jobqueueResumeRules --rules=',
+                        'route' => 'zsapi jobqueueResumeRules --rules=',
                         'defaults' => array(
                             'action' => 'jobqueueResumeRules',
                             'apiMethod' => 'post'
@@ -375,7 +375,7 @@ return array(
                 ),
                 'jobqueueDeleteRules' => array(
                     'options' => array(
-                        'route' => 'jobqueueDeleteRules --rules=',
+                        'route' => 'zsapi jobqueueDeleteRules --rules=',
                         'defaults' => array(
                             'action' => 'jobqueueDeleteRules',
                             'apiMethod' => 'post'
@@ -384,7 +384,7 @@ return array(
                 ),
                 'jobqueueRunNowRule' => array(
                     'options' => array(
-                        'route' => 'jobqueueRunNowRule --rule=',
+                        'route' => 'zsapi jobqueueRunNowRule --rule=',
                         'defaults' => array(
                             'action' => 'jobqueueRunNowRule',
                             'apiMethod' => 'post'
@@ -395,7 +395,7 @@ return array(
                 
                 'monitorCountIssuesListPredefinedFilter' => array(
                     'options' => array(
-                        'route' => 'monitorCountIssuesListPredefinedFilter --filterId= [--filters=]',
+                        'route' => 'zsapi monitorCountIssuesListPredefinedFilter --filterId= [--filters=]',
                         'defaults' => array(
                             'action' => 'monitorCountIssuesListPredefinedFilter'
                         )
@@ -404,7 +404,7 @@ return array(
                 
                 'getBacktraceFile' => array(
                     'options' => array(
-                        'route' => 'getBacktraceFile --backtraceNum= --eventsGroupId=',
+                        'route' => 'zsapi getBacktraceFile --backtraceNum= --eventsGroupId=',
                         'defaults' => array(
                             'action' => 'getBacktraceFile'
                         )
@@ -413,7 +413,7 @@ return array(
                 
                 'monitorDeleteIssuesByPredefinedFilter' => array(
                     'options' => array(
-                        'route' => 'monitorDeleteIssuesByPredefinedFilter --filterId= [--limit=] [--offset=] [--order=] [--direction=] [--filters=]',
+                        'route' => 'zsapi monitorDeleteIssuesByPredefinedFilter --filterId= [--limit=] [--offset=] [--order=] [--direction=] [--filters=]',
                         'defaults' => array(
                             'action' => 'monitorDeleteIssuesByPredefinedFilter',
                             'apiMethod' => 'post'
@@ -422,7 +422,7 @@ return array(
                 ),
                 'monitorDeleteIssues' => array(
                     'options' => array(
-                        'route' => 'monitorDeleteIssues --issueIds=',
+                        'route' => 'zsapi monitorDeleteIssues --issueIds=',
                         'defaults' => array(
                             'action' => 'monitorDeleteIssues',
                             'apiMethod' => 'post'
@@ -432,7 +432,7 @@ return array(
                 // Monitor Rules
                 'monitorSetRuleUpdated' => array(
                     'options' => array(
-                        'route' => 'monitorSetRuleUpdated',
+                        'route' => 'zsapi monitorSetRuleUpdated',
                         'defaults' => array(
                             'action' => 'monitorSetRuleUpdated',
                             'apiMethod' => 'post'
@@ -441,7 +441,7 @@ return array(
                 ),
                 'monitorExportRules' => array(
                     'options' => array(
-                        'route' => 'monitorExportRules [--applicationId=]',
+                        'route' => 'zsapi monitorExportRules [--applicationId=]',
                         'defaults' => array(
                             'action' => 'monitorExportRules'
                         )
@@ -449,7 +449,7 @@ return array(
                 ),
                 'monitorImportRules' => array(
                     'options' => array(
-                        'route' => 'monitorImportRules --monitorRules=',
+                        'route' => 'zsapi monitorImportRules --monitorRules=',
                         'defaults' => array(
                             'action' => 'monitorImportRules',
                             'apiMethod' => 'post'
@@ -458,7 +458,7 @@ return array(
                 ),
                 'monitorGetRulesList' => array(
                     'options' => array(
-                        'route' => 'monitorGetRulesList [--filters=]',
+                        'route' => 'zsapi monitorGetRulesList [--filters=]',
                         'defaults' => array(
                             'action' => 'monitorGetRulesList'
                         )
@@ -466,7 +466,7 @@ return array(
                 ),
                 'monitorEnableRules' => array(
                     'options' => array(
-                        'route' => 'monitorEnableRules --rulesIds=',
+                        'route' => 'zsapi monitorEnableRules --rulesIds=',
                         'defaults' => array(
                             'action' => 'monitorEnableRules',
                             'apiMethod' => 'post'
@@ -475,7 +475,7 @@ return array(
                 ),
                 'monitorDisableRules' => array(
                     'options' => array(
-                        'route' => 'monitorDisableRules --rulesIds=',
+                        'route' => 'zsapi monitorDisableRules --rulesIds=',
                         'defaults' => array(
                             'action' => 'monitorDisableRules',
                             'apiMethod' => 'post'
@@ -484,7 +484,7 @@ return array(
                 ),
                 'monitorSetRule' => array(
                     'options' => array(
-                        'route' => 'monitorSetRule --rulesId= --ruleProperties= [--ruleConditions=] --ruleTriggers=',
+                        'route' => 'zsapi monitorSetRule --rulesId= --ruleProperties= [--ruleConditions=] --ruleTriggers=',
                         'defaults' => array(
                             'action' => 'monitorSetRule',
                             'apiMethod' => 'post'
@@ -493,7 +493,7 @@ return array(
                 ),
                 'monitorRemoveRules' => array(
                     'options' => array(
-                        'route' => 'monitorRemoveRules --rulesIds=',
+                        'route' => 'zsapi monitorRemoveRules --rulesIds=',
                         'defaults' => array(
                             'action' => 'monitorRemoveRules',
                             'apiMethod' => 'post'
@@ -503,7 +503,7 @@ return array(
                 // Notification
                 'getNotifications' => array(
                     'options' => array(
-                        'route' => 'getNotifications [--hash=]',
+                        'route' => 'zsapi getNotifications [--hash=]',
                         'defaults' => array(
                             'action' => 'getNotifications'
                         )
@@ -511,7 +511,7 @@ return array(
                 ),
                 'deleteNotification' => array(
                     'options' => array(
-                        'route' => 'deleteNotification --type=',
+                        'route' => 'zsapi deleteNotification --type=',
                         'defaults' => array(
                             'action' => 'deleteNotification',
                             'apiMethod' => 'post'
@@ -520,7 +520,7 @@ return array(
                 ),
                 'updateNotification' => array(
                     'options' => array(
-                        'route' => 'updateNotification --type= [--repeat=]',
+                        'route' => 'zsapi updateNotification --type= [--repeat=]',
                         'defaults' => array(
                             'action' => 'updateNotification',
                             'apiMethod' => 'post'
@@ -529,7 +529,7 @@ return array(
                 ),
                 'sendNotification' => array(
                     'options' => array(
-                        'route' => 'sendNotification --type= --ip=',
+                        'route' => 'zsapi sendNotification --type= --ip=',
                         'defaults' => array(
                             'action' => 'sendNotification',
                             'apiMethod' => 'post'
@@ -539,7 +539,7 @@ return array(
                 // Server & Cluster Management
                 'tasksComplete' => array(
                     'options' => array(
-                        'route' => 'tasksComplete [--servers=] [--tasks=]',
+                        'route' => 'zsapi tasksComplete [--servers=] [--tasks=]',
                         'defaults' => array(
                             'action' => 'tasksComplete'
                         )
@@ -547,7 +547,7 @@ return array(
                 ),
                 'getServerInfo' => array(
                     'options' => array(
-                        'route' => 'getServerInfo --serverId=',
+                        'route' => 'zsapi getServerInfo --serverId=',
                         'defaults' => array(
                             'action' => 'getServerInfo'
                         )
@@ -556,7 +556,7 @@ return array(
                 
                 'clusterGetServersCount' => array(
                     'options' => array(
-                        'route' => 'clusterGetServersCount',
+                        'route' => 'zsapi clusterGetServersCount',
                         'defaults' => array(
                             'action' => 'clusterGetServersCount'
                         )
@@ -565,7 +565,7 @@ return array(
                 
                 'serverAddToCluster' => array(
                     'options' => array(
-                        'route' => 'serverAddToCluster --serverName= --dbHost= --dbUsername= --dbPassword= --nodeIp= [--failIfConnected=]',
+                        'route' => 'zsapi serverAddToCluster --serverName= --dbHost= --dbUsername= --dbPassword= --nodeIp= [--failIfConnected=]',
                         'defaults' => array(
                             'action' => 'serverAddToCluster',
                             'apiMethod' => 'post'
@@ -574,7 +574,7 @@ return array(
                 ),
                 'changeServerNameById' => array(
                     'options' => array(
-                        'route' => 'changeServerNameById --serverName= --serverId=',
+                        'route' => 'zsapi changeServerNameById --serverName= --serverId=',
                         'defaults' => array(
                             'action' => 'changeServerNameById',
                             'apiMethod' => 'post'
@@ -583,7 +583,7 @@ return array(
                 ),
                 'clusterForceRemoveServer' => array(
                     'options' => array(
-                        'route' => 'clusterForceRemoveServer --serverId=',
+                        'route' => 'zsapi clusterForceRemoveServer --serverId=',
                         'defaults' => array(
                             'action' => 'clusterForceRemoveServer',
                             'apiMethod' => 'post'
@@ -592,7 +592,7 @@ return array(
                 ),
                 'restartDaemon' => array(
                     'options' => array(
-                        'route' => 'restartDaemon --daemon= [--servers=]',
+                        'route' => 'zsapi restartDaemon --daemon= [--servers=]',
                         'defaults' => array(
                             'action' => 'restartDaemon',
                             'apiMethod' => 'post'
@@ -601,7 +601,7 @@ return array(
                 ),
                 'logsReadLines' => array(
                     'options' => array(
-                        'route' => 'logsReadLines --logName= [--serverId=] [--lineToRead=] [--filter=]',
+                        'route' => 'zsapi logsReadLines --logName= [--serverId=] [--lineToRead=] [--filter=]',
                         'defaults' => array(
                             'action' => 'logsReadLines'
                         )
@@ -609,7 +609,7 @@ return array(
                 ),
                 'logsGetLogfile' => array(
                     'options' => array(
-                        'route' => 'logsGetLogfile --logName= [--serverId=]',
+                        'route' => 'zsapi logsGetLogfile --logName= [--serverId=]',
                         'defaults' => array(
                             'action' => 'logsGetLogfile'
                         )
@@ -618,7 +618,7 @@ return array(
                 // Statistics
                 'statisticsGetSeries' => array(
                     'options' => array(
-                        'route' => 'statisticsGetSeries --type= [--appId=] [--from=] [--to=]',
+                        'route' => 'zsapi statisticsGetSeries --type= [--appId=] [--from=] [--to=]',
                         'defaults' => array(
                             'action' => 'statisticsGetSeries'
                         )
@@ -626,7 +626,7 @@ return array(
                 ),
                 'statisticsClearData' => array(
                     'options' => array(
-                        'route' => 'statisticsClearData',
+                        'route' => 'zsapi statisticsClearData',
                         'defaults' => array(
                             'action' => 'statisticsClearData',
                             'apiMethod' => 'post'
@@ -636,7 +636,7 @@ return array(
                 // Studio integration
                 'studioStartDebugMode' => array(
                     'options' => array(
-                        'route' => 'studioStartDebugMode --filters= [--options=]',
+                        'route' => 'zsapi studioStartDebugMode --filters= [--options=]',
                         'defaults' => array(
                             'action' => 'studioStartDebugMode',
                             'apiMethod' => 'post'
@@ -645,7 +645,7 @@ return array(
                 ),
                 'studioStopDebugMode' => array(
                     'options' => array(
-                        'route' => 'studioStopDebugMode',
+                        'route' => 'zsapi studioStopDebugMode',
                         'defaults' => array(
                             'action' => 'studioStopDebugMode',
                             'apiMethod' => 'post'
@@ -654,7 +654,7 @@ return array(
                 ),
                 'studioIsDebugModeenabled' => array(
                     'options' => array(
-                        'route' => 'studioIsDebugModeenabled',
+                        'route' => 'zsapi studioIsDebugModeenabled',
                         'defaults' => array(
                             'action' => 'studioIsDebugModeenabled',
                             'apiMethod' => 'post'
@@ -664,7 +664,7 @@ return array(
                 // Page cache
                 'pagecacheListRules' => array(
                     'options' => array(
-                        'route' => 'pagecacheListRules [--applicationsId=] [--freeText=]',
+                        'route' => 'zsapi pagecacheListRules [--applicationsId=] [--freeText=]',
                         'defaults' => array(
                             'action' => 'pagecacheListRules'
                         )
@@ -672,7 +672,7 @@ return array(
                 ),
                 'pagecacheSaveRule' => array(
                     'options' => array(
-                        'route' => 'pagecacheSaveRule [--ruleId=] --urlScheme= --urlHost= --urlPath= --matchType= --lifetime= [--compress=] [--name=] [--conditionsType=] [--conditions=] [--splitBy=]',
+                        'route' => 'zsapi pagecacheSaveRule [--ruleId=] --urlScheme= --urlHost= --urlPath= --matchType= --lifetime= [--compress=] [--name=] [--conditionsType=] [--conditions=] [--splitBy=]',
                         'defaults' => array(
                             'action' => 'pagecacheSaveRule',
                             'apiMethod' => 'post'
@@ -681,7 +681,7 @@ return array(
                 ),
                 'pagecacheSaveApplicationRule' => array(
                     'options' => array(
-                        'route' => 'pagecacheSaveApplicationRule [--ruleId=] --urlPath= --matchType= --lifetime= [--compress=] [--name=] --applicationId [--conditionsType=] [--conditions=] [--splitBy=]',
+                        'route' => 'zsapi pagecacheSaveApplicationRule [--ruleId=] --urlPath= --matchType= --lifetime= [--compress=] [--name=] --applicationId [--conditionsType=] [--conditions=] [--splitBy=]',
                         'defaults' => array(
                             'action' => 'pagecacheSaveApplicationRule',
                             'apiMethod' => 'post'
@@ -690,7 +690,7 @@ return array(
                 ),
                 'pagecacheDeleteRules' => array(
                     'options' => array(
-                        'route' => 'pagecacheDeleteRules [--rules=]',
+                        'route' => 'zsapi pagecacheDeleteRules [--rules=]',
                         'defaults' => array(
                             'action' => 'pagecacheListRules'
                         )
@@ -698,7 +698,7 @@ return array(
                 ),
                 'pagecacheRuleInfo' => array(
                     'options' => array(
-                        'route' => 'pagecacheRuleInfo --id=',
+                        'route' => 'zsapi pagecacheRuleInfo --id=',
                         'defaults' => array(
                             'action' => 'pagecacheRuleInfo'
                         )
@@ -706,7 +706,7 @@ return array(
                 ),
                 'pagecacheClearCacheByRuleName' => array(
                     'options' => array(
-                        'route' => 'pagecacheClearCacheByRuleName --ruleName=',
+                        'route' => 'zsapi pagecacheClearCacheByRuleName --ruleName=',
                         'defaults' => array(
                             'action' => 'pagecacheClearCacheByRuleName',
                             'apiMethod' => 'post'
@@ -715,7 +715,7 @@ return array(
                 ),
                 'pagecacheClearRulesCache' => array(
                     'options' => array(
-                        'route' => 'pagecacheClearRulesCache --rules=',
+                        'route' => 'zsapi pagecacheClearRulesCache --rules=',
                         'defaults' => array(
                             'action' => 'pagecacheClearRulesCache',
                             'apiMethod' => 'post'
