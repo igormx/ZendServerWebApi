@@ -2,7 +2,6 @@
 namespace ZendServerWebApi\Controller;
 use Zend\Mvc\Controller\AbstractController;
 use Zend\Mvc\MvcEvent;
-use ZendServerWebApi\Model\Request;
 
 /**
  * Main Console Controller
@@ -25,22 +24,34 @@ class ZendServerController extends AbstractController
                     'Missing route matches; unsure how to retrieve action');
         }
         $action = $routeMatch->getParam('action', 'not-found');
-        $response = $this->sendApiRequest();
+        //Manage parameter
+        $requestParameters = array();
+        foreach ($routeMatch->getParams() as $name => $value){
+        	if (in_array($name, array('action','controller'))) continue;
+        	$arrayValue = json_decode($value,true);
+        	if ($arrayValue !== NULL) {
+        		$requestParameters[$name] = $arrayValue;
+        	}
+        	else $requestParameters[$name] = $value;
+        }
+        var_dump($requestParameters);
+        $response = $this->sendApiRequest($requestParameters);
         $e->setResult(false);
-        echo $response->getHttpResponse()->getBody();
+        //echo $response->getHttpResponse()->getBody();
     }
 
     /**
      * Send the API Request to Zend Server
      *
+     * @param array $params Request parameter
      * @return Response
      */
-    protected function sendApiRequest ()
+    protected function sendApiRequest($params)
     {
         $serviceLocator = $this->getServiceLocator();
         $apiManager = $serviceLocator->get('zend_server_api');
         $action = $this->params('action');
-        $response = $apiManager->$action();
+        $response = $apiManager->$action($params);
         return $response;
     }
 }
