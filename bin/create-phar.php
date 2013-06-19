@@ -2,7 +2,7 @@
 <?php
 /**
  * Create zs-client.phar
- * 
+ *
  * @link      http://github.com/zendframework/ZFTool for the canonical source repository
  * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
@@ -21,12 +21,11 @@ $phar = new \Phar($pharPath, 0, $filename);
 $phar->startBuffering();
 
 // remove the first line in the index file
-$phar->addFromString('$srcRoot/public/index.php', substr(php_strip_whitespace("$srcRoot/public/index.php"), 19));
+$phar->addFromString("index.php", substr(php_strip_whitespace("$srcRoot/public/index.php"), 19));
 
 addDir($phar, "$srcRoot/vendor", $srcRoot);
 addDir($phar, "$srcRoot/config", $srcRoot);
 addDir($phar, "$srcRoot/module", $srcRoot);
-addDir($phar, "$srcRoot/public", $srcRoot);
 
 $stub = <<<EOF
 #!/usr/bin/env php
@@ -38,8 +37,10 @@ $stub = <<<EOF
  * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
+define('PHAR', true);
+chdir(dirname(__DIR__));
 Phar::mapPhar('$filename');
-require 'phar://$filename/public/index.php';
+require 'phar://$filename/index.php';
 __HALT_COMPILER();
 
 EOF;
@@ -57,11 +58,12 @@ if (file_exists($pharPath)) {
 
 /**
  * Add a directory in phar removing whitespaces from PHP source code
- * 
+ *
  * @param Phar $phar
- * @param string $sDir 
+ * @param string $sDir
  */
-function addDir($phar, $sDir, $baseDir = null) {
+function addDir($phar, $sDir, $baseDir = null)
+{
     $oDir = new RecursiveIteratorIterator (
         new RecursiveDirectoryIterator ($sDir),
         RecursiveIteratorIterator::SELF_FIRST
@@ -76,11 +78,12 @@ function addDir($phar, $sDir, $baseDir = null) {
 
 /**
  * Add a file in phar removing whitespaces from the file
- * 
+ *
  * @param Phar $phar
- * @param string $sFile 
+ * @param string $sFile
  */
-function addFile($phar, $sFile, $baseDir = null) {
+function addFile($phar, $sFile, $baseDir = null)
+{
     if (null !== $baseDir) {
         $phar->addFromString(substr($sFile, strlen($baseDir) + 1), php_strip_whitespace($sFile));
     } else {

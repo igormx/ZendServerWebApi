@@ -11,22 +11,12 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 ini_set('user_agent', 'Zend Server WebAPI Client');
 
-chdir(dirname(__DIR__));
-if (file_exists("vendor/autoload.php")) {
-    require_once "vendor/autoload.php";
-} else {
-    if (file_exists("init_autoloader.php")) {
-        require_once 'init_autoloader.php';
-    } elseif (file_exists("vendor/autoload.php")) {
-        require_once 'vendor/autoload.php';
-    } elseif (file_exists("autoload.php")) {
-        require_once 'autoload.php';
-    } else {
-        echo 'Error: I cannot find the autoloader of the application.' . PHP_EOL;
-        echo "Check if ".getcwd()." contains a valid ZF2 application." . PHP_EOL;
-        exit(2);
-    }
+$basePath = dirname(__DIR__);
+if(!defined('PHAR')) {
+    chdir($basePath);
 }
+
+require_once "vendor/autoload.php";
 
 if (file_exists("config/application.config.php")) {
     $appConfig = require "config/application.config.php";

@@ -13,7 +13,6 @@
 		"zendframework/zend-serializer" : ">=2.0.0",
 		"zendframework/zend-mvc" : ">=2.0.0",
 		"zendframework/zend-file" : ">=2.0.0",
-		"zendframework/zend-code" : ">=2.0.0",
 		"zendframework/zend-text" : ">=2.0.0",
 		"zendframework/zend-console" : ">=2.0.0",
 		"zendframework/zend-servicemanager" : ">=2.0.0",

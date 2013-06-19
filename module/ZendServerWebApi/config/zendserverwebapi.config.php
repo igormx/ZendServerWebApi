@@ -30,13 +30,13 @@ return array (
                 )
 
         ),
-       
+
         'service_manager' => array (
                 'factories' => array (
                         'zend_server_api' => 'ZendServerWebApi\Model\Service\ApiManagerFactory'
                 )
         ),
-        
+
         //  Zend Server API specific Settings
         'zsapi' => array (
             'file' => $_SERVER['HOME'].'/.zsapi.ini',
@@ -45,7 +45,7 @@ return array (
             'version' => '6.0.1',
             // HTTP Client
             'client' => array(
-                'adapter' => 'Zend\Http\Client\Adapter\Socket', 
+                'adapter' => 'Zend\Http\Client\Adapter\Socket',
             )
         ),
 );
