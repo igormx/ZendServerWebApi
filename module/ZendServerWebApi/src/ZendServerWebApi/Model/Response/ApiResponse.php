@@ -4,7 +4,7 @@ use Zend\Http\Response;
 
 /**
  * API Response skeleton
- * 
+ *
  * API Response model based on HTTP response.
  * Inner XML data can be accessed as an SimpleXMLelement
  */
@@ -13,38 +13,38 @@ class ApiResponse
 
     /**
      * Http response from Zend Server Api
-     * 
+     *
      * @var Response
      */
     protected $httpResponse;
 
     /**
      * Response XML Data
-     * 
+     *
      * @var \SimpleXMLElement
      */
     protected $xml;
 
     /**
      * Check if the API Response is an error
-     * 
+     *
      * Can be an HTTP erro or a API fonctionnal error.
-     * 
+     *
      * @var boolean
      */
     protected $isError = false;
 
     /**
      * Error message
-     * 
+     *
      * @var string
      */
     protected $errorMessage = '';
 
     /**
      * Build the API response from the given HTTP response
-     * 
-     * @param Response $httpResponse            
+     *
+     * @param Response $httpResponse
      */
     public function __construct (Response $httpResponse)
     {
@@ -64,12 +64,14 @@ class ApiResponse
             }
             $this->isError = true;
             $this->setErrorMessage($errorMessage);
+
             return;
         }
         // Lookign for API error
         if ($xml->errorData) {
             $this->isError = true;
             $this->setErrorMessage((string) $xml->errorData->errorMessage);
+
             return;
         }
         $this->setXml($xml);
@@ -77,17 +79,17 @@ class ApiResponse
 
     /**
      * Api response Factory.
-     * 
+     *
      * If a API response class corresponding to the api method exist
      * will return an instance of this class instead of the generic API
      * response.
-     * 
-     * @param Response $HttpResponse            
+     *
+     * @param Response $HttpResponse
      */
     public static function factory (Response $httpResponse)
     {
         $responseBody = $httpResponse->getBody();
-        preg_match('@<method>([a-zA-Z]*)</method>@', $responseBody, 
+        preg_match('@<method>([a-zA-Z]*)</method>@', $responseBody,
                 $methodMatch);
         $method = $methodMatch[1];
         $className = __NAMESPACE__ . '\\' . ucfirst($method);
@@ -95,6 +97,7 @@ class ApiResponse
             $response = new $className($httpResponse);
         else
             $response = new ApiResponse($httpResponse);
+
         return $response;
     }
 
@@ -109,7 +112,7 @@ class ApiResponse
 
     /**
      *
-     * @param Response $httpResponse            
+     * @param Response $httpResponse
      */
     public function setHttpResponse ($httpResponse)
     {
@@ -127,9 +130,9 @@ class ApiResponse
 
     /**
      * Magical function to acceed easily to response data
-     * 
-     * @param string $name            
-     * @return NULL | \SimpleXMLElement
+     *
+     * @param  string $name
+     * @return NULL   | \SimpleXMLElement
      */
     public function __get ($name)
     {
@@ -140,7 +143,7 @@ class ApiResponse
 
     /**
      * Check if the response is an HTTP Error or an API Error
-     * 
+     *
      * @return \ZendServerWebApi\Model\Response\unknown
      */
     public function isError ()
@@ -159,7 +162,7 @@ class ApiResponse
 
     /**
      *
-     * @param \ZendServerWebApi\Model\Response\unknown $errorMessage            
+     * @param \ZendServerWebApi\Model\Response\unknown $errorMessage
      */
     protected function setErrorMessage ($errorMessage)
     {

@@ -3,7 +3,7 @@ namespace ZendServerWebApi\Model;
 
 /**
  * Api Target Zend Server
- * 
+ *
  * Define the target Zend Server which request will be send
  */
 class ZendServer
@@ -11,28 +11,28 @@ class ZendServer
 
     /**
      * API Version
-     * 
+     *
      * @var string
      */
     protected $apiVersion;
 
     /**
      * Zend Server Version
-     * 
+     *
      * @var string
      */
     protected $version;
 
     /**
      * Zend Server uri
-     * 
+     *
      * @var Zend\Uri\http
      */
     protected $uri;
 
     /**
      * Array of available api version dapending on Zend Server version
-     * 
+     *
      * @var array
      */
     protected $apiVersionAvailability = array(
@@ -45,7 +45,7 @@ class ZendServer
 
     /**
      *
-     * @param string $config            
+     * @param string $config
      */
     public function __construct ($config)
     {
@@ -76,7 +76,7 @@ class ZendServer
 
     /**
      *
-     * @param string $apiVersion            
+     * @param string $apiVersion
      */
     public function setApiVersion ($apiVersion)
     {
@@ -85,7 +85,7 @@ class ZendServer
 
     /**
      *
-     * @param string $version            
+     * @param string $version
      */
     public function setVersion ($version)
     {
@@ -103,7 +103,7 @@ class ZendServer
 
     /**
      *
-     * @param \ZendServerWebApi\Model\Zend\Uri\http $uri            
+     * @param \ZendServerWebApi\Model\Zend\Uri\http $uri
      */
     public function setUri ($uri)
     {

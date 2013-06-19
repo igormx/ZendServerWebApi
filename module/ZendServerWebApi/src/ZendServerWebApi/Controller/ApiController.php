@@ -8,8 +8,9 @@ use Zend\Mvc\MvcEvent;
  *
  * Controller that manage all CLI commands
  */
-class ZendServerController extends AbstractController
+class ApiController extends AbstractController
 {
+    protected $apiManager;
 
     /**
      * (non-PHPdoc)
@@ -26,32 +27,34 @@ class ZendServerController extends AbstractController
         $action = $routeMatch->getParam('action', 'not-found');
         //Manage parameter
         $requestParameters = array();
-        foreach ($routeMatch->getParams() as $name => $value){
-        	if (in_array($name, array('action','controller'))) continue;
-        	$arrayValue = json_decode($value,true);
-        	if ($arrayValue !== NULL) {
-        		$requestParameters[$name] = $arrayValue;
-        	}
-        	else $requestParameters[$name] = $value;
+        foreach ($routeMatch->getParams() as $name => $value) {
+            if (in_array($name, array('action','controller'))) continue;
+            $arrayValue = $value;
+            if ($arrayValue !== NULL) {
+                $requestParameters[$name] = $arrayValue;
+            } else $requestParameters[$name] = $value;
         }
-        var_dump($requestParameters);
         $response = $this->sendApiRequest($requestParameters);
         $e->setResult(false);
-        //echo $response->getHttpResponse()->getBody();
+        echo $response->getHttpResponse()->getBody();
     }
 
     /**
      * Send the API Request to Zend Server
      *
-     * @param array $params Request parameter
+     * @param  array    $params Request parameter
      * @return Response
      */
     protected function sendApiRequest($params)
     {
-        $serviceLocator = $this->getServiceLocator();
-        $apiManager = $serviceLocator->get('zend_server_api');
+        if(!$this->apiManager) {
+            $serviceLocator = $this->getServiceLocator();
+            $this->apiManager = $serviceLocator->get('zend_server_api');
+        }
+
         $action = $this->params('action');
-        $response = $apiManager->$action($params);
+        $response = $this->apiManager->$action($params);
+
         return $response;
     }
 }

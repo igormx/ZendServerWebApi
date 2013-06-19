@@ -5,8 +5,8 @@ use Zend\Http\Headers;
 use Zend\Stdlib\Parameters;
 
 /**
- * API request 
- * 
+ * API request
+ *
  * Extends the HTTP request to manage HTTP Headers specific work
  * needed by the Zend Server API
  */
@@ -15,61 +15,61 @@ class Request extends Http\Request
 
     /**
      * Api version
-     * 
+     *
      * @var string
      */
     protected $apiVersion;
 
     /**
      * API key
-     * 
+     *
      * @var ApiKey
      */
     protected $apiKey;
 
     /**
      * Requested Action
-     * 
+     *
      * @var string
      */
     protected $action;
 
     /**
      * The Zend Server the request is suppose to be addressed
-     * 
+     *
      * @var ZendServer
      */
     protected $targetServer;
 
     /**
      * Api Method Parameters
-     * 
+     *
      * @var array
      */
     protected $parameter = array();
 
     /**
      * Main URI Path for Web Api
-     * 
+     *
      * @var string
      */
     const API_URI = '/ZendServer/Api/';
 
     /**
      * User agent
-     * 
+     *
      * @var String
      */
     const USER_AGENT = 'Zend\Http\Client';
 
     /**
      * API reqiest constructor
-     * 
-     * @param ZendServer $targetServer            
-     * @param string $action            
-     * @param ApiKey $apiKey            
+     *
+     * @param ZendServer $targetServer
+     * @param string     $action
+     * @param ApiKey     $apiKey
      */
-    public function __construct (ZendServer $targetServer, $action, 
+    public function __construct (ZendServer $targetServer, $action,
             ApiKey $apiKey)
     {
         $this->setAction($action);
@@ -81,7 +81,7 @@ class Request extends Http\Request
 
     /**
      * (non-PHPdoc)
-     * 
+     *
      * @see \Zend\Http\Request::setUri()
      */
     public function setUri ()
@@ -102,15 +102,15 @@ class Request extends Http\Request
         $signatureData .= $webApiUri . ':';
         $signatureData .= self::USER_AGENT . ':';
         $signatureData .= $date;
-        $signature = hash_hmac('sha256', $signatureData, 
+        $signature = hash_hmac('sha256', $signatureData,
                 $this->apiKey->getKey());
         $headers = new Headers();
-        $headers->addHeaderLine('Host', 
+        $headers->addHeaderLine('Host',
                 $this->uri->getHost() . ':' . $this->uri->getPort());
         $headers->addHeaderLine('Date', $date);
-        $headers->addHeaderLine('Accept', 
+        $headers->addHeaderLine('Accept',
                 'application/vnd.zend.serverapi+xml;version=' . $this->apiVersion);
-        $headers->addHeaderLine('X-Zend-Signature', 
+        $headers->addHeaderLine('X-Zend-Signature',
                 $this->apiKey->getName() . ';' . $signature);
         if ($this->isPost()) {
             $headers->addHeaderLine('Content-Type', 'multipart/form-data');
@@ -139,9 +139,9 @@ class Request extends Http\Request
 
     /**
      * Set Api Method parameter
-     * 
-     * @param string $name            
-     * @param string $value            
+     *
+     * @param string $name
+     * @param string $value
      */
     public function setParameter ($name, $value)
     {
@@ -150,8 +150,8 @@ class Request extends Http\Request
 
     /**
      * Return parameter value
-     * 
-     * @param string $name            
+     *
+     * @param  string     $name
      * @return multitype:
      */
     public function getParameter ($name)
@@ -161,8 +161,8 @@ class Request extends Http\Request
 
     /**
      * Set parameters
-     * 
-     * @param array $params            
+     *
+     * @param array $params
      */
     public function setParameters ($params)
     {
@@ -200,7 +200,7 @@ class Request extends Http\Request
 
     /**
      *
-     * @param string $apiVersion            
+     * @param string $apiVersion
      */
     public function setApiVersion ($apiVersion)
     {
@@ -209,7 +209,7 @@ class Request extends Http\Request
 
     /**
      *
-     * @param \ZendServerWebApi\Model\ApiKey $apiKey            
+     * @param \ZendServerWebApi\Model\ApiKey $apiKey
      */
     public function setApiKey ($apiKey)
     {
@@ -218,7 +218,7 @@ class Request extends Http\Request
 
     /**
      *
-     * @param string $action            
+     * @param string $action
      */
     public function setAction ($action)
     {
@@ -236,7 +236,7 @@ class Request extends Http\Request
 
     /**
      *
-     * @param \ZendServerWebApi\Model\ZendServer $targetServer            
+     * @param \ZendServerWebApi\Model\ZendServer $targetServer
      */
     public function setTargetServer ($targetServer)
     {

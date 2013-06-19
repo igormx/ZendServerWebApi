@@ -13,7 +13,7 @@ class ApiManagerFactory implements FactoryInterface
     /**
      * Create APIManager as a service
      *
-     * @param ServiceLocatorInterface $serviceLocator            
+     * @param  ServiceLocatorInterface $serviceLocator
      * @return mixed
      */
     public function createService (ServiceLocatorInterface $serviceLocator)
@@ -24,6 +24,7 @@ class ApiManagerFactory implements FactoryInterface
         $apiConfig = $serviceLocator->get('config');
         $apiConfig = $apiConfig['console']['router']['routes'];
         $apiManager = new ApiManager($server, $apiKey, $client, $apiConfig);
+
         return $apiManager;
     }
 }

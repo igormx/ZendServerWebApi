@@ -9,22 +9,22 @@ class ApiKey
 
     /**
      * Key name
-     * 
+     *
      * @var string
      */
     protected $name;
 
     /**
      * Secret hash key
-     * 
+     *
      * @var string
      */
     protected $key;
 
     /**
      *
-     * @param string $name            
-     * @param string $key            
+     * @param string $name
+     * @param string $key
      */
     public function __construct ($name, $key)
     {
@@ -52,7 +52,7 @@ class ApiKey
 
     /**
      *
-     * @param string $name            
+     * @param string $name
      */
     public function setName ($name)
     {
@@ -61,7 +61,7 @@ class ApiKey
 
     /**
      *
-     * @param string $key            
+     * @param string $key
      */
     public function setKey ($key)
     {
