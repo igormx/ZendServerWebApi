@@ -76,8 +76,8 @@ class ApiManager
         if (isset($args[0])) {
             if ($methodConf == 'post') {
                 $files = array();
-                if(isset($actionOptions['defaults']['files'])) {
-                    foreach($actionOptions['defaults']['files'] as $fileParam) {
+                if(isset($actionOptions['files'])) {
+                    foreach($actionOptions['files'] as $fileParam) {
                         $filePath = $args[0][$fileParam];
                         $files[$filePath] = array(
                             'formname' => $fileParam,

@@ -32,6 +32,10 @@ class Client extends ZendClient
             $this->setRequest($request);
         }
 
+        if(!count($this->getRequest()->getFiles())) {
+            return parent::send($request);
+        }
+
         $this->redirectCounter = 0;
         $response = null;
 
@@ -211,6 +215,10 @@ class Client extends ZendClient
      */
     protected function prepareBody()
     {
+        if(!count($this->getRequest()->getFiles())) {
+            return parent::prepareBody();
+        }
+
         // According to RFC2616, a TRACE request should not have a body.
         if ($this->getRequest()->isTrace()) {
             return '';
@@ -281,6 +289,10 @@ class Client extends ZendClient
      */
     protected function doRequest(Http $uri, $method, $secure = false, $headers = array(), $body = '')
     {
+        if(!count($this->getRequest()->getFiles())) {
+            return parent::doRequest($uri, $method, $secure, $headers, $body);
+        }
+
         // Open the connection, send the request and read the response
         $this->adapter->connect($uri->getHost(), $uri->getPort(), $secure);
 
@@ -294,7 +306,7 @@ class Client extends ZendClient
         }
 
         // HTTP connection
-        $ending = "--".$this->boundary."--\r\n";
+        $ending = "\r\n--".$this->boundary."--\r\n";
         $headers['Content-Length'] = strlen($body) + $this->filesContentLength() + strlen($ending);
         $this->lastRawRequest = $this->adapter->write($method,$uri, $this->config['httpversion'], $headers, '');
         $this->adapter->directWrite($body);

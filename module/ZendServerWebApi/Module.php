@@ -78,7 +78,34 @@ class Module implements ConfigProviderInterface,
         $eventManager = $event->getApplication()->getEventManager();
 
         // check if the command requires special configuration settings
+        $eventManager->attach(MvcEvent::EVENT_ROUTE, array($this,'postRoute'), -2);
+
+        // check if the command requires special configuration settings
         $eventManager->attach(MvcEvent::EVENT_DISPATCH, array($this,'preDispatch'), 100);
+    }
+
+    public function postRoute(MvcEvent $event)
+    {
+        $match = $event->getRouteMatch();
+        if (!$match) {
+            return;
+        }
+
+        // normalization of the arguments
+        $config = $event->getApplication()->getServiceManager()->get('config');
+        $routeName = $match->getMatchedRouteName();
+
+        if(isset($config['console']['router']['routes'][$routeName]['options']['arrays'])) {
+            foreach($config['console']['router']['routes'][$routeName]['options']['arrays'] as $arrayParam) {
+               if($value = $match->getParam($arrayParam)) {
+                  $data = array();
+                  // @todo: add exception if the value is not a valid query string
+                     parse_str($value,$data); // the values is provided like a query string
+                     $match->setParam($arrayParam, $data);
+               }
+            }
+        }
+
     }
 
     public function preDispatch(MvcEvent $event)
@@ -118,17 +145,12 @@ class Module implements ConfigProviderInterface,
                 $appConfig['zsapi']['url'] = $config['zsurl'];
             }
 
-            $hasFiles = $match->getParam('files');
-            if($hasFiles) {
-                $zendServerClient = new Model\Http\Client(null, array(
+            $customHttpClient = new Model\Http\Client(null, array(
                     'adapter' => 'ZendServerWebApi\Model\Http\Adapter\Socket'
-                ));
-            } else {
-                $zendServerClient = new Client(null, $appConfig['zsapi']['client']);
-            }
+            ));
+            // $zendServerClient = new Client(null, $appConfig['zsapi']['client']);
 
-
-            $serviceManager->setService('zendServerClient', $zendServerClient);
+            $serviceManager->setService('zendServerClient', $customHttpClient);
             $defaultApiKey = new ApiKey($config['zskey'], $config['zssecret']);
             $serviceManager->setService('defaultApiKey', $defaultApiKey);
             $targetServer = new ZendServer($appConfig['zsapi']);

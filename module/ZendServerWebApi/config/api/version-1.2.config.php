@@ -95,12 +95,14 @@ return array (
                                                         'controller' => 'ZendServerWebApi\Controller\Api',
                                                         'action' => 'applicationDeploy',
                                                         'apiMethod' => 'post',
-                                                        'files'   => array(
-                                                                // Specifies which parameter values should be treated as file names
-                                                                'appPackage'
-                                                        )
                                                 ),
-
+                                                'files'   => array(
+                                                        // Specifies which parameter values should be treated as file names
+                                                        'appPackage'
+                                                ),
+                                                'arrays' => array(
+                                                        'userParams'
+                                                )
                                         )
                                 )
                                 ,
@@ -111,6 +113,12 @@ return array (
                                                         'controller' => 'ZendServerWebApi\Controller\Api',
                                                         'action' => 'applicationUpdate',
                                                         'apiMethod' => 'post'
+                                                ),
+                                                'files' => array(
+                                                    'appPackage'
+                                                ),
+                                                'arrays' => array(
+                                                    'userParams'
                                                 )
                                         )
                                 )

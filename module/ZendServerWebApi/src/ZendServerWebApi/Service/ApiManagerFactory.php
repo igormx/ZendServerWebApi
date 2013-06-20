@@ -1,5 +1,5 @@
 <?php
-namespace ZendServerWebApi\Model\Service;
+namespace ZendServerWebApi\Service;
 use Zend\ServiceManager\FactoryInterface;
 use ZendServerWebApi\Model\ApiManager;
 use Zend\ServiceManager\ServiceLocatorInterface;

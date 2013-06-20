@@ -2,14 +2,15 @@
 return array (
         'controllers' => array (
                 'invokables' => array (
-                        'ZendServerWebApi\Controller\Api'      => 'ZendServerWebApi\Controller\ApiController',
-                        'ZendServerWebApi\Controller\Target' => 'ZendServerWebApi\Controller\TargetController'
+                        'ZendServerWebApi\Controller\Api'    => 'ZendServerWebApi\Controller\ApiController',
+                        'ZendServerWebApi\Controller\Target' => 'ZendServerWebApi\Controller\TargetController',
+                        'ZendServerWebApi\Controller\App' => 'ZendServerWebApi\Controller\AppController'
                 )
         ),
         'console' => array (
                 'router' => array (
                         'routes' => array (
-                                'zendserver' => array (
+                                'addtarget' => array (
                                         'options' => array (
                                                 'route' => 'addTarget --target= [--zsurl=] --zskey= --zssecret=',
                                                 'defaults' => array (
@@ -25,6 +26,29 @@ return array (
                                                     array('--zssecret', 'The hash of the API key'),
                                                 )
                                         )
+                                ),
+                                'installapp' => array (
+                                        'options' => array (
+                                                'route' => 'installApp --zpk= --baseUri= [--userParams=] [--userAppName=] [--target=] [--zsurl=] [--zskey=] [--zssecret=]',
+                                                'defaults' => array (
+                                                        'controller' => 'ZendServerWebApi\Controller\App',
+                                                        'action' => 'install'
+                                                ),
+                                                'info' => array (
+                                                        'This command installs or updates an application',
+                                                        array('--zpk', 'The zpk package file'),
+                                                        array('--baseUri','The baseUri of where the application will be installed'),
+                                                        array('--userParams', 'User parameters that have to formated as a query string'),
+                                                        array('--userAppName', 'Name of the application'),
+                                                        array('--target', 'The unique name of the target'),
+                                                        array('--zsurl','The Zend Server URL. If not specified then it will be http://localhost:10081'),
+                                                        array('--zskey', 'The name of the API key'),
+                                                        array('--zssecret', 'The hash of the API key'),
+                                                ),
+                                                'arrays' => array (
+                                                       'userParams',
+                                                )
+                                        )
                                 )
                         ),
                 )
@@ -33,7 +57,7 @@ return array (
 
         'service_manager' => array (
                 'factories' => array (
-                        'zend_server_api' => 'ZendServerWebApi\Model\Service\ApiManagerFactory'
+                        'zend_server_api' => 'ZendServerWebApi\Service\ApiManagerFactory'
                 )
         ),
 
