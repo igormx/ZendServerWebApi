@@ -14,7 +14,7 @@ class AppController extends AbstractActionController
         $requestParameters = array();
         $zpk     = $this->params('zpk');
         $baseUri = $this->params('baseUri');
-        $userParams = $this->params('userParams');
+        $userParams = $this->params('userParams', array());
         $appName    = $this->params('userAppName');
         $appId      = 0;
 

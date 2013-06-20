@@ -176,7 +176,7 @@ class Module implements ConfigProviderInterface,
     {
         $config = $this->getConfig();
 
-        $command = $_SERVER['argv'][1];
+        $command = @$_SERVER['argv'][1];
         $routes = $config['console']['router']['routes'];
         if(isset($routes[$command])) {
             $routes = array (
