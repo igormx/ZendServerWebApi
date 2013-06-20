@@ -7,7 +7,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'configurationExport [--directivesBlacklist=] [--snapshotName=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'configurationExport'
                                                 )
                                         )
@@ -16,7 +16,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'configurationImport --configFile= [--ignoreSystemMismatch=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'configurationImport',
                                                         'apiMethod' => 'post'
                                                 )
@@ -26,7 +26,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'getSystemInfo',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'getSystemInfo'
                                                 )
                                         )
@@ -35,7 +35,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'clusterGetServersStatus [--servers=] [--forec=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'clusterGetServersStatus'
                                                 )
                                         )
@@ -44,7 +44,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'clusterAddServer --serverName= --serverIp=',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'changeServerNameById',
                                                         'apiMethod' => 'post'
                                                 )
@@ -54,7 +54,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'clusterRemoveServer --serverId=',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'clusterRemoveServer',
                                                         'apiMethod' => 'post'
                                                 )
@@ -64,7 +64,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'clusterDisableServer --serverId=',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'clusterDisableServer',
                                                         'apiMethod' => 'post'
                                                 )
@@ -74,7 +74,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'clusterEnableServer --serverId=',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'clusterEnableServer',
                                                         'apiMethod' => 'post'
                                                 )
@@ -84,7 +84,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'clusterReconfigureServer --serverId= [--doRestart=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'clusterReconfigureServer',
                                                         'apiMethod' => 'post'
                                                 )
@@ -94,7 +94,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'restartPHP [--servers=] [--force=] [--parallelRestart=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'restartPHP',
                                                         'apiMethod' => 'post'
                                                 )

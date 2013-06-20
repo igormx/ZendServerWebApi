@@ -31,11 +31,6 @@ class TargetController extends AbstractActionController
             }
         }
 
-
-        if(!isset($data[$target]['zsurl'])) {
-            $data[$target]['zsurl'] = $appConfig['zsapi']['url'];
-        }
-
         $config = new ConfigWriter();
         $config->toFile($appConfig['zsapi']['file'], $data);
     }

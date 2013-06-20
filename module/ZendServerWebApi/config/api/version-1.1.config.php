@@ -7,7 +7,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'codetracingList [--applications=] [--freetext=] [--type=] [--limit=] [--offset=] [--orderBy=] [--direction=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'codetracingList'
                                                 )
                                         )

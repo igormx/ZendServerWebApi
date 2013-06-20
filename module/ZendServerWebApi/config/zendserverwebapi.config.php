@@ -2,21 +2,22 @@
 return array (
         'controllers' => array (
                 'invokables' => array (
-                        'ZendServerWebApi\Controller\Api'    => 'ZendServerWebApi\Controller\ApiController',
-                        'ZendServerWebApi\Controller\Target' => 'ZendServerWebApi\Controller\TargetController',
-                        'ZendServerWebApi\Controller\App' => 'ZendServerWebApi\Controller\AppController'
+                        'webapi-api-controller'    => 'ZendServerWebApi\Controller\ApiController',
+                        'webapi-target-controller' => 'ZendServerWebApi\Controller\TargetController',
+                        'webapi-app-controller' => 'ZendServerWebApi\Controller\AppController'
                 )
         ),
         'console' => array (
                 'router' => array (
                         'routes' => array (
-                                'addtarget' => array (
+                                'addTarget' => array (
                                         'options' => array (
                                                 'route' => 'addTarget --target= [--zsurl=] --zskey= --zssecret=',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Target',
+                                                        'controller' => 'webapi-target-controller',
                                                         'action' => 'add',
                                                         'no-target' => true,
+                                                        'zsurl'     => "http://localhost:10081",
                                                 ),
                                                 'info' => array (
                                                     'This command has to be executed first if you do not want to pass always the zskey zssecret and zsurl.',
@@ -27,11 +28,11 @@ return array (
                                                 )
                                         )
                                 ),
-                                'installapp' => array (
+                                'installApp' => array (
                                         'options' => array (
                                                 'route' => 'installApp --zpk= --baseUri= [--userParams=] [--userAppName=] [--target=] [--zsurl=] [--zskey=] [--zssecret=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\App',
+                                                        'controller' => 'webapi-app-controller',
                                                         'action' => 'install'
                                                 ),
                                                 'info' => array (
@@ -57,7 +58,10 @@ return array (
 
         'service_manager' => array (
                 'factories' => array (
-                        'zend_server_api' => 'ZendServerWebApi\Service\ApiManagerFactory'
+                     'zend_server_api' => 'ZendServerWebApi\Service\ApiManagerFactory'
+                ),
+                'invokables' => array (
+                    'zpk'  => 'ZendServerWebApi\Service\ZpkInvokable',
                 )
         ),
 

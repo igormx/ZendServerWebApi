@@ -22,18 +22,11 @@ class AppController extends AbstractActionController
 
         if(!$appName) {
             // get the name of the application from the package
-            $zip = new \ZipArchive;
-            if(!@$zip->open($zpk)) {
-                throw new \Zend\Mvc\Exception\RuntimeException('Invalid ZPK file was provided');
+            try {
+                $xml = $this->serviceLocator->get('zpk')->getMeta($zpk);
+            } catch (\ErrorException $ex) {
+                throw new \Zend\Mvc\Exception\RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
             }
-
-            $content = @$zip->getFromName('deployment.xml');
-            $zip->close();
-            if(!$content) {
-                throw new \Zend\Mvc\Exception\RuntimeException('Missing deployment.xml in the zpk file.');
-            }
-
-            $xml = new \SimpleXMLElement($content);
             $appName = sprintf("%s", $xml->name);
 
             // or the baseUri
@@ -52,23 +45,24 @@ class AppController extends AbstractActionController
         }
 
         if(!$appId) {
-            // if there is no match then install the application
-            $response = $apiManager->applicationDeploy(array(
+            $response = $this->forward()->dispatch('webapi-api-controller',array(
+                'action'      => 'applicationDeploy',
                 'appPackage'  => $zpk,
                 'baseUrl'     => $baseUri,
                 'userAppName' => $appName,
                 'userParams'  => $userParams,
             ));
+
         } else {
             // otherwise update the application
-            $response = $apiManager->applicationUpdate(array(
+            $response = $this->forward()->dispatch('webapi-api-controller',array(
+                'action'     => 'applicationUpdate',
                 'appId'      => $appId,
                 'appPackage' => $zpk,
                 'userParams' => $userParams,
             ));
         }
 
-        $this->getEvent()->setResult(false);
-        print $response->getHttpResponse()->getBody();
+        return $response;
     }
 }

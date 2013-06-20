@@ -55,27 +55,31 @@ class ApiResponse
             $this->isError = true;
             $this->setErrorMessage($this->httpResponse->getReasonPhrase());
         }
-        // Looking for XML error
-        libxml_use_internal_errors(true);
-        $xml = simplexml_load_string($httpResponse->getBody());
-        if (! $xml) {
-            $errorMessage = '';
-            foreach (libxml_get_errors() as $error) {
-                $errorMessage .= $error->message . "\n";
+
+        $contentType  = $httpResponse->getHeaders()->get('content-type')->getFieldValue();
+        if(strpos($contentType,'application/vnd.zend.serverapi+xml')===0) {
+            // Looking for XML error
+            libxml_use_internal_errors(true);
+            $xml = simplexml_load_string($httpResponse->getBody());
+            if (! $xml) {
+                $errorMessage = '';
+                foreach (libxml_get_errors() as $error) {
+                    $errorMessage .= $error->message . "\n";
+                }
+                $this->isError = true;
+                $this->setErrorMessage($errorMessage);
+
+                return;
             }
-            $this->isError = true;
-            $this->setErrorMessage($errorMessage);
+            // Lookign for API error
+            if ($xml->errorData) {
+                $this->isError = true;
+                $this->setErrorMessage((string) $xml->errorData->errorMessage);
 
-            return;
+                return;
+            }
+            $this->setXml($xml);
         }
-        // Lookign for API error
-        if ($xml->errorData) {
-            $this->isError = true;
-            $this->setErrorMessage((string) $xml->errorData->errorMessage);
-
-            return;
-        }
-        $this->setXml($xml);
     }
 
     /**
@@ -90,16 +94,19 @@ class ApiResponse
     public static function factory (Response $httpResponse)
     {
         $responseBody = $httpResponse->getBody();
-        preg_match('@<method>([a-zA-Z]*)</method>@', $responseBody,
-                $methodMatch);
-        $method = $methodMatch[1];
-        $className = __NAMESPACE__ . '\\' . ucfirst($method);
-        if (class_exists($className))
-            $response = new $className($httpResponse);
-        else
-            $response = new ApiResponse($httpResponse);
+        $contentType  = $httpResponse->getHeaders()->get('content-type')->getFieldValue();
 
-        return $response;
+        if(strpos($contentType,'application/vnd.zend.serverapi+xml')===0) {
+            if(preg_match('@<method>([a-zA-Z]*)</method>@', $responseBody,$methodMatch)) {
+                $method = $methodMatch[1];
+                $className = __NAMESPACE__ . '\\' . ucfirst($method);
+                if (class_exists($className)) {
+                    return new $className($httpResponse);
+                }
+            }
+        }
+
+        return new ApiResponse($httpResponse);
     }
 
     /**

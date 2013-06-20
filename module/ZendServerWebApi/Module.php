@@ -4,7 +4,6 @@ namespace ZendServerWebApi;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
-use Zend\Http\Client;
 use Zend\Mvc\MvcEvent;
 use Zend\EventManager\EventInterface;
 use ZendServerWebApi\Model\ApiKey;
@@ -13,6 +12,7 @@ use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
 use Zend\Console\Adapter\AdapterInterface as Console;
 use Zend\ModuleManager\Feature\ConsoleBannerProviderInterface;
 use Zend\Config\Reader\Ini as ConfigReader;
+use Zend\Http\Response as HttpResponse;
 
 
 class Module implements ConfigProviderInterface,
@@ -82,6 +82,9 @@ class Module implements ConfigProviderInterface,
 
         // check if the command requires special configuration settings
         $eventManager->attach(MvcEvent::EVENT_DISPATCH, array($this,'preDispatch'), 100);
+
+        // check if the command requires special configuration settings
+        $eventManager->attach(MvcEvent::EVENT_FINISH, array($this,'preFinish'), 100);
     }
 
     public function postRoute(MvcEvent $event)
@@ -158,6 +161,14 @@ class Module implements ConfigProviderInterface,
         }
     }
 
+    public function preFinish(MvcEvent $event)
+    {
+        $response = $event->getResponse();
+        if($response instanceof HttpResponse) {
+            $response->setContent($response->getBody());
+        }
+    }
+
     /* (non-PHPdoc)
      * @see \Zend\ModuleManager\Feature\ConsoleUsageProviderInterface::getConsoleUsage()
      */
@@ -165,13 +176,23 @@ class Module implements ConfigProviderInterface,
     {
         $config = $this->getConfig();
 
-        $usage = array(
-            "The following commands are available:"
-        );
-        foreach ($config['console']['router']['routes'] as $route) {
+        $command = $_SERVER['argv'][1];
+        $routes = $config['console']['router']['routes'];
+        if(isset($routes[$command])) {
+            $routes = array (
+                $command => $routes[$command]
+            );
+        } else {
+            $usage = array(
+                    "The following commands are available:"
+            );
+        }
+
+        foreach ($routes as $route) {
             $command = $route['options']['route'];
-            $usage[] = "\t$command";
+            $usage[] = "* $command";
             if(isset($route['options']['info'])) {
+                $usage[]='';
                 if(!is_array($route['options']['info'])) {
                     $usage[] = $route['options']['info'];
                 } else {

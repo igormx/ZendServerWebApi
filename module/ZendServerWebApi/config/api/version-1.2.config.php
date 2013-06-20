@@ -7,7 +7,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'codetracingDisable [--restartNow=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'codetracingDisable',
                                                         'apiMethod' => 'post'
                                                 )
@@ -18,7 +18,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'codetracingEnable [--restartNow=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'codetracingEnable',
                                                         'apiMethod' => 'post'
                                                 )
@@ -29,7 +29,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'codetracingIsEnabled',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'codetracingIsEnabled'
                                                 )
                                         )
@@ -39,7 +39,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'codetracingCreate --url=',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'codetracingCreate',
                                                         'apiMethod' => 'post'
                                                 )
@@ -50,7 +50,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'codetracingGetInfo --id=',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'codetracingGetInfo'
                                                 )
                                         )
@@ -60,7 +60,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'codetracingDelete --traceFile=',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'codetracingDelete',
                                                         'apiMethod' => 'post'
                                                 )
@@ -71,7 +71,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'codetracingDownloadTraceFile --traceFile= [--eventsGroupId=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'codetracingDownloadTraceFile'
                                                 )
                                         )
@@ -82,7 +82,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'applicationGetStatus [--applications=] [--direction=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'applicationGetStatus'
                                                 )
                                         )
@@ -90,11 +90,12 @@ return array (
                                 ,
                                 'applicationDeploy' => array (
                                         'options' => array (
-                                                'route' => 'applicationDeploy --appPackage= --baseUrl= [--createVhost=] [--defaultserver=] [--userAppName=] [--ignoreFialures=] [--userParams=]',
+                                                'route' => 'applicationDeploy --appPackage= --baseUrl= [--createVhost=] [--defaultServer=] [--userAppName=] [--ignoreFialures=] [--userParams=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
-                                                        'action' => 'applicationDeploy',
-                                                        'apiMethod' => 'post',
+                                                        'controller'    => 'webapi-api-controller',
+                                                        'action'        => 'applicationDeploy',
+                                                        'apiMethod'     => 'post',
+                                                        'defaultServer' => 'TRUE'
                                                 ),
                                                 'files'   => array(
                                                         // Specifies which parameter values should be treated as file names
@@ -110,7 +111,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'applicationUpdate --appId= --appPackage= [--ignoreFailures=] [--userParams=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'applicationUpdate',
                                                         'apiMethod' => 'post'
                                                 ),
@@ -127,7 +128,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'applicationRemove --appId=',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'applicationRemove',
                                                         'apiMethod' => 'post'
                                                 )
@@ -138,7 +139,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'applicationSynchronize --appId= [--servers=] [--ignoreFailures=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'applicationSynchronize',
                                                         'apiMethod' => 'post'
                                                 )
@@ -149,7 +150,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'applicationRollback --appId=',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
 
                                                         'action' => 'applicationRollback',
                                                         'apiMethod' => 'post'
@@ -161,7 +162,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'monitorGetRequestSummary --requestUid=',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'monitorGetRequestSummary'
                                                 )
                                         )
@@ -171,7 +172,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'monitorGetIssuesListPredefinedFilter --filterId= [--limit=] [--offset=] [--order=] [--direction=] [--filters=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'monitorGetIssuesListPredefinedFilter'
                                                 )
                                         )
@@ -181,7 +182,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'monitorGetIssuesDetails --issueId= [--limit=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'monitorGetIssuesDetails'
                                                 )
                                         )
@@ -191,7 +192,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'monitorGetEventGroupDetails --issueId= --eventsGroupId=',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'monitorGetEventGroupDetails'
                                                 )
                                         )
@@ -201,7 +202,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'monitorExportIssueByEventsGroup --eventsGroupId=',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'monitorExportIssueByEventsGroup'
                                                 )
                                         )
@@ -211,7 +212,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'monitorChangeIssueStatus --issueId= --newStatus=',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'monitorChangeIssueStatus',
                                                         'apiMethod' => 'post'
                                                 )
@@ -223,7 +224,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'studioStartDebug --eventsGroupId= [--noRemote=] [--overrideHost=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'studioStartDebug',
                                                         'apiMethod' => 'post'
                                                 )
@@ -234,7 +235,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'studioStartProfile --eventsGroupId= [--overrideHost=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'studioStartProfile',
                                                         'apiMethod' => 'post'
                                                 )
@@ -245,7 +246,7 @@ return array (
                                         'options' => array (
                                                 'route' => 'studioShowSource --eventsGroupId= [--overrideHost=]',
                                                 'defaults' => array (
-                                                        'controller' => 'ZendServerWebApi\Controller\Api',
+                                                        'controller' => 'webapi-api-controller',
                                                         'action' => 'studioShowSource',
                                                         'apiMethod' => 'post'
                                                 )
